@@ -1,0 +1,116 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Asparagus albus", "label": "Asparagus albus", "shape": "dot"}, {"id": "Chamaerops humilis", "label": "Chamaerops humilis", "shape": "dot"}, {"id": "Helianthemum almeriense", "label": "Helianthemum almeriense", "shape": "dot"}, {"id": "Launaea lanifera", "label": "Launaea lanifera", "shape": "dot"}, {"id": "Lavandula multifida", "label": "Lavandula multifida", "shape": "dot"}, {"id": "Lycium intricatum", "label": "Lycium intricatum", "shape": "dot"}, {"id": "Macrochloa tenacissima", "label": "Macrochloa tenacissima", "shape": "dot"}, {"id": "Phlomis purpurea", "label": "Phlomis purpurea", "shape": "dot"}, {"id": "Salsola genistoides", "label": "Salsola genistoides", "shape": "dot"}, {"id": "Thymus hyemalis", "label": "Thymus hyemalis", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": "Asparagus albus", "to": "Asparagus albus", "width": 22.164948453608247}, {"from": "Chamaerops humilis", "to": "Chamaerops humilis", "width": 21.1340206185567}, {"from": "Helianthemum almeriense", "to": "Helianthemum almeriense", "width": 20.103092783505154}, {"from": "Launaea lanifera", "to": "Launaea lanifera", "width": 22.164948453608247}, {"from": "Lavandula multifida", "to": "Lavandula multifida", "width": 23.711340206185564}, {"from": "Lycium intricatum", "to": "Lycium intricatum", "width": 24.22680412371134}, {"from": "Macrochloa tenacissima", "to": "Macrochloa tenacissima", "width": 32.98969072164948}, {"from": "Phlomis purpurea", "to": "Phlomis purpurea", "width": 26.804123711340207}, {"from": "Salsola genistoides", "to": "Salsola genistoides", "width": 20.103092783505154}, {"from": "Thymus hyemalis", "to": "Thymus hyemalis", "width": 40.20618556701031}, {"from": "Macrochloa tenacissima", "to": "Thymus hyemalis", "width": 22.164948453608247}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.2,
+            "damping": 0.09,
+            "nodeDistance": 100,
+            "springConstant": 0.05,
+            "springLength": 600
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

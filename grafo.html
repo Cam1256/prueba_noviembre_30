@@ -1,0 +1,116 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"id": "Abies pinsapo", "label": "Abies pinsapo", "shape": "dot"}, {"id": "Arenaria erinacea", "label": "Arenaria erinacea", "shape": "dot"}, {"id": "Brachypodium retusum", "label": "Brachypodium retusum", "shape": "dot"}, {"id": "Bupleurum fruticescens subsp. spinosum", "label": "Bupleurum fruticescens subsp. spinosum", "shape": "dot"}, {"id": "Cerastium gibraltaricum", "label": "Cerastium gibraltaricum", "shape": "dot"}, {"id": "Cistus albidus", "label": "Cistus albidus", "shape": "dot"}, {"id": "Crataegus monogyna", "label": "Crataegus monogyna", "shape": "dot"}, {"id": "Dactylis glomerata subsp. hispanica", "label": "Dactylis glomerata subsp. hispanica", "shape": "dot"}, {"id": "Daphne gnidium", "label": "Daphne gnidium", "shape": "dot"}, {"id": "Helichrysum stoechas", "label": "Helichrysum stoechas", "shape": "dot"}, {"id": "Helleborus foetidus", "label": "Helleborus foetidus", "shape": "dot"}, {"id": "Juniperus oxycedrus subsp. oxycedrus", "label": "Juniperus oxycedrus subsp. oxycedrus", "shape": "dot"}, {"id": "Linaria tristis", "label": "Linaria tristis", "shape": "dot"}, {"id": "Phlomis purpurea", "label": "Phlomis purpurea", "shape": "dot"}, {"id": "Quercus rotundifolia", "label": "Quercus rotundifolia", "shape": "dot"}, {"id": "Rhamnus myrtifolia", "label": "Rhamnus myrtifolia", "shape": "dot"}, {"id": "Rubia peregrina", "label": "Rubia peregrina", "shape": "dot"}, {"id": "Thymus mastichina subsp. mastichina", "label": "Thymus mastichina subsp. mastichina", "shape": "dot"}, {"id": "Ulex baeticus subsp. baeticus", "label": "Ulex baeticus subsp. baeticus", "shape": "dot"}]);
+        edges = new vis.DataSet([{"from": "Abies pinsapo", "to": "Abies pinsapo", "width": 16.447368421052634}, {"from": "Arenaria erinacea", "to": "Arenaria erinacea", "width": 10.0}, {"from": "Brachypodium retusum", "to": "Brachypodium retusum", "width": 10.921052631578949}, {"from": "Bupleurum fruticescens subsp. spinosum", "to": "Bupleurum fruticescens subsp. spinosum", "width": 12.894736842105264}, {"from": "Cerastium gibraltaricum", "to": "Cerastium gibraltaricum", "width": 16.842105263157894}, {"from": "Cistus albidus", "to": "Cistus albidus", "width": 16.57894736842105}, {"from": "Crataegus monogyna", "to": "Crataegus monogyna", "width": 13.421052631578947}, {"from": "Dactylis glomerata subsp. hispanica", "to": "Dactylis glomerata subsp. hispanica", "width": 11.578947368421053}, {"from": "Daphne gnidium", "to": "Daphne gnidium", "width": 16.842105263157894}, {"from": "Helichrysum stoechas", "to": "Helichrysum stoechas", "width": 12.631578947368421}, {"from": "Helleborus foetidus", "to": "Helleborus foetidus", "width": 15.394736842105264}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Juniperus oxycedrus subsp. oxycedrus", "width": 13.289473684210526}, {"from": "Linaria tristis", "to": "Linaria tristis", "width": 11.710526315789474}, {"from": "Phlomis purpurea", "to": "Phlomis purpurea", "width": 16.710526315789473}, {"from": "Quercus rotundifolia", "to": "Quercus rotundifolia", "width": 14.210526315789473}, {"from": "Rhamnus myrtifolia", "to": "Rhamnus myrtifolia", "width": 11.842105263157894}, {"from": "Rubia peregrina", "to": "Rubia peregrina", "width": 13.289473684210526}, {"from": "Thymus mastichina subsp. mastichina", "to": "Thymus mastichina subsp. mastichina", "width": 13.026315789473683}, {"from": "Ulex baeticus subsp. baeticus", "to": "Ulex baeticus subsp. baeticus", "width": 22.36842105263158}, {"from": "Cistus albidus", "to": "Daphne gnidium", "width": 10.526315789473683}, {"from": "Cistus albidus", "to": "Phlomis purpurea", "width": 10.394736842105264}, {"from": "Cistus albidus", "to": "Ulex baeticus subsp. baeticus", "width": 10.394736842105264}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Ulex baeticus subsp. baeticus", "width": 10.263157894736842}, {"from": "Phlomis purpurea", "to": "Ulex baeticus subsp. baeticus", "width": 10.657894736842104}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.2,
+            "damping": 0.09,
+            "nodeDistance": 100,
+            "springConstant": 0.05,
+            "springLength": 600
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>

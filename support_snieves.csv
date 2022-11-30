@@ -1,0 +1,175 @@
+;support;itemsets
+0;0.16447368421052633;Abies pinsapo
+1;0.05131578947368421;Anthyllis vulneraria
+2;0.1;Arenaria erinacea
+3;0.05789473684210526;Asphodelus macrocarpus subsp. rubescens
+4;0.06315789473684211;Asplenium ceterach
+5;0.08289473684210526;Bellis sylvestris
+6;0.05263157894736842;Berberis vulgaris
+7;0.10921052631578948;Brachypodium retusum
+8;0.12894736842105264;Bupleurum fruticescens subsp. spinosum
+9;0.05394736842105263;Campanula mollis
+10;0.09078947368421053;Carlina corymbosa
+11;0.16842105263157894;Cerastium gibraltaricum
+12;0.05131578947368421;Chaenorhinum villosum
+13;0.06842105263157895;Chamaerops humilis
+14;0.06842105263157895;Cirsium echinatum
+15;0.16578947368421051;Cistus albidus
+16;0.06710526315789474;Cistus ladanifer
+17;0.06184210526315789;Cistus monspeliensis
+18;0.07631578947368421;Cistus salviifolius
+19;0.13421052631578947;Crataegus monogyna
+20;0.11578947368421053;Dactylis glomerata subsp. hispanica
+21;0.16842105263157894;Daphne gnidium
+22;0.0881578947368421;Daphne laureola
+23;0.0868421052631579;Erinacea anthyllis
+24;0.09342105263157895;Erodium cheilanthifolium
+25;0.056578947368421055;Erodium cicutarium
+26;0.08026315789473684;Festuca scariosa
+27;0.05526315789473684;Galium baeticum
+28;0.075;Geranium purpureum
+29;0.075;Hedera helix
+30;0.05263157894736842;Helianthemum cinereum subsp. rotundifolium
+31;0.06578947368421052;Helianthemum marifolium
+32;0.05526315789473684;Helichrysum italicum subsp. serotinum
+33;0.12631578947368421;Helichrysum stoechas
+34;0.15394736842105264;Helleborus foetidus
+35;0.09342105263157895;Hormathophylla spinosa
+36;0.05394736842105263;Juniperus oxycedrus
+37;0.13289473684210526;Juniperus oxycedrus subsp. oxycedrus
+38;0.09210526315789473;Juniperus phoenicea subsp. phoenicea
+39;0.07763157894736843;Juniperus sabina
+40;0.07894736842105263;Lavandula lanata
+41;0.07236842105263158;Leontodon longirostris
+42;0.11710526315789474;Linaria tristis
+43;0.08552631578947369;Macrochloa tenacissima
+44;0.0881578947368421;Melica minuta
+45;0.07894736842105263;Ononis reuteri
+46;0.05921052631578947;Orobanche purpurea
+47;0.05263157894736842;Phillyrea angustifolia
+48;0.07894736842105263;Phlomis crinita
+49;0.06578947368421052;Phlomis lychnitis
+50;0.16710526315789473;Phlomis purpurea
+51;0.05394736842105263;Picnomon acarna
+52;0.06842105263157895;Pinus halepensis
+53;0.07763157894736843;Pinus pinaster
+54;0.05131578947368421;Pistacia lentiscus
+55;0.07763157894736843;Poa ligulata
+56;0.06710526315789474;Prunus prostrata
+57;0.06842105263157895;Ptilostemon hispanicus
+58;0.05131578947368421;Quercus coccifera
+59;0.09342105263157895;Quercus faginea
+60;0.14210526315789473;Quercus rotundifolia
+61;0.11842105263157894;Rhamnus myrtifolia
+62;0.06842105263157895;Rosa canina
+63;0.07763157894736843;Rosmarinus officinalis
+64;0.13289473684210526;Rubia peregrina
+65;0.05789473684210526;Rubus ulmifolius
+66;0.0868421052631579;Sanguisorba minor
+67;0.075;Sanguisorba verrucosa
+68;0.06315789473684211;Saxifraga globulifera
+69;0.05131578947368421;Saxifraga granulata
+70;0.09342105263157895;Scabiosa turolensis subsp. grosii
+71;0.075;Scirpoides holoschoenus
+72;0.06315789473684211;Sedum dasyphyllum
+73;0.08157894736842106;Silene andryalifolia
+74;0.05394736842105263;Stachys circinata
+75;0.09473684210526316;Teucrium similatum
+76;0.13026315789473683;Thymus mastichina subsp. mastichina
+77;0.05921052631578947;Ulex baeticus
+78;0.2236842105263158;Ulex baeticus subsp. baeticus
+79;0.05131578947368421;Abies pinsapo, Crataegus monogyna
+80;0.05263157894736842;Abies pinsapo, Daphne gnidium
+81;0.05526315789473684;Daphne laureola, Abies pinsapo
+82;0.07631578947368421;Helleborus foetidus, Abies pinsapo
+83;0.05526315789473684;Abies pinsapo, Juniperus phoenicea subsp. phoenicea
+84;0.05789473684210526;Quercus rotundifolia, Abies pinsapo
+85;0.06184210526315789;Ulex baeticus subsp. baeticus, Abies pinsapo
+86;0.05131578947368421;Arenaria erinacea, Bupleurum fruticescens subsp. spinosum
+87;0.06184210526315789;Brachypodium retusum, Cistus albidus
+88;0.06447368421052632;Brachypodium retusum, Daphne gnidium
+89;0.08289473684210526;Phlomis purpurea, Brachypodium retusum
+90;0.06710526315789474;Ulex baeticus subsp. baeticus, Brachypodium retusum
+91;0.060526315789473685;Bupleurum fruticescens subsp. spinosum, Cerastium gibraltaricum
+92;0.06578947368421052;Erinacea anthyllis, Bupleurum fruticescens subsp. spinosum
+93;0.05;Festuca scariosa, Bupleurum fruticescens subsp. spinosum
+94;0.06447368421052632;Helleborus foetidus, Bupleurum fruticescens subsp. spinosum
+95;0.060526315789473685;Helleborus foetidus, Cerastium gibraltaricum
+96;0.056578947368421055;Chamaerops humilis, Phlomis purpurea
+97;0.05789473684210526;Cistus albidus, Dactylis glomerata subsp. hispanica
+98;0.10526315789473684;Cistus albidus, Daphne gnidium
+99;0.06578947368421052;Helichrysum stoechas, Cistus albidus
+100;0.08157894736842106;Juniperus oxycedrus subsp. oxycedrus, Cistus albidus
+101;0.05131578947368421;Cistus albidus, Lavandula lanata
+102;0.05263157894736842;Macrochloa tenacissima, Cistus albidus
+103;0.10394736842105264;Phlomis purpurea, Cistus albidus
+104;0.05263157894736842;Cistus albidus, Pinus halepensis
+105;0.05921052631578947;Quercus rotundifolia, Cistus albidus
+106;0.06842105263157895;Cistus albidus, Rosmarinus officinalis
+107;0.06710526315789474;Thymus mastichina subsp. mastichina, Cistus albidus
+108;0.10394736842105264;Ulex baeticus subsp. baeticus, Cistus albidus
+109;0.056578947368421055;Phlomis purpurea, Cistus monspeliensis
+110;0.05789473684210526;Daphne laureola, Crataegus monogyna
+111;0.06447368421052632;Helleborus foetidus, Crataegus monogyna
+112;0.05526315789473684;Crataegus monogyna, Quercus faginea
+113;0.05263157894736842;Rubia peregrina, Crataegus monogyna
+114;0.05131578947368421;Daphne gnidium, Dactylis glomerata subsp. hispanica
+115;0.06315789473684211;Phlomis purpurea, Dactylis glomerata subsp. hispanica
+116;0.06973684210526315;Ulex baeticus subsp. baeticus, Dactylis glomerata subsp. hispanica
+117;0.05394736842105263;Helichrysum stoechas, Daphne gnidium
+118;0.060526315789473685;Juniperus oxycedrus subsp. oxycedrus, Daphne gnidium
+119;0.09868421052631579;Phlomis purpurea, Daphne gnidium
+120;0.06315789473684211;Quercus rotundifolia, Daphne gnidium
+121;0.05263157894736842;Daphne gnidium, Rosmarinus officinalis
+122;0.06315789473684211;Rubia peregrina, Daphne gnidium
+123;0.05394736842105263;Thymus mastichina subsp. mastichina, Daphne gnidium
+124;0.09605263157894736;Ulex baeticus subsp. baeticus, Daphne gnidium
+125;0.07763157894736843;Helleborus foetidus, Daphne laureola
+126;0.05;Daphne laureola, Quercus faginea
+127;0.056578947368421055;Hormathophylla spinosa, Erodium cheilanthifolium
+128;0.05526315789473684;Helichrysum stoechas, Thymus mastichina subsp. mastichina
+129;0.0881578947368421;Helichrysum stoechas, Ulex baeticus subsp. baeticus
+130;0.060526315789473685;Helleborus foetidus, Hormathophylla spinosa
+131;0.06973684210526315;Helleborus foetidus, Juniperus sabina
+132;0.05789473684210526;Helleborus foetidus, Ononis reuteri
+133;0.05263157894736842;Helleborus foetidus, Prunus prostrata
+134;0.05394736842105263;Helleborus foetidus, Quercus faginea
+135;0.07105263157894737;Juniperus oxycedrus subsp. oxycedrus, Phlomis purpurea
+136;0.05;Juniperus oxycedrus subsp. oxycedrus, Quercus rotundifolia
+137;0.05526315789473684;Juniperus oxycedrus subsp. oxycedrus, Thymus mastichina subsp. mastichina
+138;0.10263157894736842;Juniperus oxycedrus subsp. oxycedrus, Ulex baeticus subsp. baeticus
+139;0.060526315789473685;Ulex baeticus subsp. baeticus, Lavandula lanata
+140;0.05526315789473684;Macrochloa tenacissima, Phlomis purpurea
+141;0.06184210526315789;Ulex baeticus subsp. baeticus, Macrochloa tenacissima
+142;0.05;Ulex baeticus subsp. baeticus, Phlomis lychnitis
+143;0.05131578947368421;Phlomis purpurea, Pinus halepensis
+144;0.06315789473684211;Quercus rotundifolia, Phlomis purpurea
+145;0.05789473684210526;Phlomis purpurea, Rosmarinus officinalis
+146;0.05526315789473684;Phlomis purpurea, Rubia peregrina
+147;0.06447368421052632;Phlomis purpurea, Thymus mastichina subsp. mastichina
+148;0.10657894736842105;Ulex baeticus subsp. baeticus, Phlomis purpurea
+149;0.05394736842105263;Pinus halepensis, Rosmarinus officinalis
+150;0.05526315789473684;Ptilostemon hispanicus, Ulex baeticus subsp. baeticus
+151;0.060526315789473685;Quercus rotundifolia, Thymus mastichina subsp. mastichina
+152;0.07631578947368421;Quercus rotundifolia, Ulex baeticus subsp. baeticus
+153;0.05526315789473684;Ulex baeticus subsp. baeticus, Rosmarinus officinalis
+154;0.05263157894736842;Ulex baeticus subsp. baeticus, Rubia peregrina
+155;0.05263157894736842;Ulex baeticus subsp. baeticus, Teucrium similatum
+156;0.09473684210526316;Ulex baeticus subsp. baeticus, Thymus mastichina subsp. mastichina
+157;0.05263157894736842;Helleborus foetidus, Abies pinsapo, Daphne laureola
+158;0.05394736842105263;Phlomis purpurea, Brachypodium retusum, Cistus albidus
+159;0.05131578947368421;Phlomis purpurea, Brachypodium retusum, Daphne gnidium
+160;0.05526315789473684;Ulex baeticus subsp. baeticus, Brachypodium retusum, Phlomis purpurea
+161;0.06842105263157895;Phlomis purpurea, Cistus albidus, Daphne gnidium
+162;0.06973684210526315;Ulex baeticus subsp. baeticus, Cistus albidus, Daphne gnidium
+163;0.05131578947368421;Helichrysum stoechas, Ulex baeticus subsp. baeticus, Cistus albidus
+164;0.05131578947368421;Juniperus oxycedrus subsp. oxycedrus, Phlomis purpurea, Cistus albidus
+165;0.06710526315789474;Juniperus oxycedrus subsp. oxycedrus, Ulex baeticus subsp. baeticus, Cistus albidus
+166;0.05;Phlomis purpurea, Cistus albidus, Rosmarinus officinalis
+167;0.06447368421052632;Ulex baeticus subsp. baeticus, Cistus albidus, Phlomis purpurea
+168;0.05394736842105263;Ulex baeticus subsp. baeticus, Thymus mastichina subsp. mastichina, Cistus albidus
+169;0.05131578947368421;Helleborus foetidus, Crataegus monogyna, Daphne laureola
+170;0.05526315789473684;Juniperus oxycedrus subsp. oxycedrus, Ulex baeticus subsp. baeticus, Daphne gnidium
+171;0.06315789473684211;Ulex baeticus subsp. baeticus, Daphne gnidium, Phlomis purpurea
+172;0.05789473684210526;Juniperus oxycedrus subsp. oxycedrus, Ulex baeticus subsp. baeticus, Phlomis purpurea
+173;0.05526315789473684;Ulex baeticus subsp. baeticus, Thymus mastichina subsp. mastichina, Phlomis purpurea

@@ -1,0 +1,163 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 1000px;
+                 height: 1000px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "id": "Abies pinsapo", "label": "Abies pinsapo", "shape": "dot"}, {"color": "#97c2fc", "id": "Anthyllis vulneraria", "label": "Anthyllis vulneraria", "shape": "dot"}, {"color": "#97c2fc", "id": "Arenaria erinacea", "label": "Arenaria erinacea", "shape": "dot"}, {"color": "#97c2fc", "id": "Asphodelus macrocarpus subsp. rubescens", "label": "Asphodelus macrocarpus subsp. rubescens", "shape": "dot"}, {"color": "#97c2fc", "id": "Asplenium ceterach", "label": "Asplenium ceterach", "shape": "dot"}, {"color": "#97c2fc", "id": "Bellis sylvestris", "label": "Bellis sylvestris", "shape": "dot"}, {"color": "#97c2fc", "id": "Berberis vulgaris", "label": "Berberis vulgaris", "shape": "dot"}, {"color": "#97c2fc", "id": "Brachypodium retusum", "label": "Brachypodium retusum", "shape": "dot"}, {"color": "#97c2fc", "id": "Bupleurum fruticescens subsp. spinosum", "label": "Bupleurum fruticescens subsp. spinosum", "shape": "dot"}, {"color": "#97c2fc", "id": "Campanula mollis", "label": "Campanula mollis", "shape": "dot"}, {"color": "#97c2fc", "id": "Carlina corymbosa", "label": "Carlina corymbosa", "shape": "dot"}, {"color": "#97c2fc", "id": "Cerastium gibraltaricum", "label": "Cerastium gibraltaricum", "shape": "dot"}, {"color": "#97c2fc", "id": "Chaenorhinum villosum", "label": "Chaenorhinum villosum", "shape": "dot"}, {"color": "#97c2fc", "id": "Chamaerops humilis", "label": "Chamaerops humilis", "shape": "dot"}, {"color": "#97c2fc", "id": "Cirsium echinatum", "label": "Cirsium echinatum", "shape": "dot"}, {"color": "#97c2fc", "id": "Cistus albidus", "label": "Cistus albidus", "shape": "dot"}, {"color": "#97c2fc", "id": "Cistus ladanifer", "label": "Cistus ladanifer", "shape": "dot"}, {"color": "#97c2fc", "id": "Cistus monspeliensis", "label": "Cistus monspeliensis", "shape": "dot"}, {"color": "#97c2fc", "id": "Cistus salviifolius", "label": "Cistus salviifolius", "shape": "dot"}, {"color": "#97c2fc", "id": "Crataegus monogyna", "label": "Crataegus monogyna", "shape": "dot"}, {"color": "#97c2fc", "id": "Dactylis glomerata subsp. hispanica", "label": "Dactylis glomerata subsp. hispanica", "shape": "dot"}, {"color": "#97c2fc", "id": "Daphne gnidium", "label": "Daphne gnidium", "shape": "dot"}, {"color": "#97c2fc", "id": "Daphne laureola", "label": "Daphne laureola", "shape": "dot"}, {"color": "#97c2fc", "id": "Erinacea anthyllis", "label": "Erinacea anthyllis", "shape": "dot"}, {"color": "#97c2fc", "id": "Erodium cheilanthifolium", "label": "Erodium cheilanthifolium", "shape": "dot"}, {"color": "#97c2fc", "id": "Erodium cicutarium", "label": "Erodium cicutarium", "shape": "dot"}, {"color": "#97c2fc", "id": "Festuca scariosa", "label": "Festuca scariosa", "shape": "dot"}, {"color": "#97c2fc", "id": "Galium baeticum", "label": "Galium baeticum", "shape": "dot"}, {"color": "#97c2fc", "id": "Geranium purpureum", "label": "Geranium purpureum", "shape": "dot"}, {"color": "#97c2fc", "id": "Hedera helix", "label": "Hedera helix", "shape": "dot"}, {"color": "#97c2fc", "id": "Helianthemum cinereum subsp. rotundifolium", "label": "Helianthemum cinereum subsp. rotundifolium", "shape": "dot"}, {"color": "#97c2fc", "id": "Helianthemum marifolium", "label": "Helianthemum marifolium", "shape": "dot"}, {"color": "#97c2fc", "id": "Helichrysum italicum subsp. serotinum", "label": "Helichrysum italicum subsp. serotinum", "shape": "dot"}, {"color": "#97c2fc", "id": "Helichrysum stoechas", "label": "Helichrysum stoechas", "shape": "dot"}, {"color": "#97c2fc", "id": "Helleborus foetidus", "label": "Helleborus foetidus", "shape": "dot"}, {"color": "#97c2fc", "id": "Hormathophylla spinosa", "label": "Hormathophylla spinosa", "shape": "dot"}, {"color": "#97c2fc", "id": "Juniperus oxycedrus", "label": "Juniperus oxycedrus", "shape": "dot"}, {"color": "#97c2fc", "id": "Juniperus oxycedrus subsp. oxycedrus", "label": "Juniperus oxycedrus subsp. oxycedrus", "shape": "dot"}, {"color": "#97c2fc", "id": "Juniperus phoenicea subsp. phoenicea", "label": "Juniperus phoenicea subsp. phoenicea", "shape": "dot"}, {"color": "#97c2fc", "id": "Juniperus sabina", "label": "Juniperus sabina", "shape": "dot"}, {"color": "#97c2fc", "id": "Lavandula lanata", "label": "Lavandula lanata", "shape": "dot"}, {"color": "#97c2fc", "id": "Leontodon longirostris", "label": "Leontodon longirostris", "shape": "dot"}, {"color": "#97c2fc", "id": "Linaria tristis", "label": "Linaria tristis", "shape": "dot"}, {"color": "#97c2fc", "id": "Macrochloa tenacissima", "label": "Macrochloa tenacissima", "shape": "dot"}, {"color": "#97c2fc", "id": "Melica minuta", "label": "Melica minuta", "shape": "dot"}, {"color": "#97c2fc", "id": "Ononis reuteri", "label": "Ononis reuteri", "shape": "dot"}, {"color": "#97c2fc", "id": "Orobanche purpurea", "label": "Orobanche purpurea", "shape": "dot"}, {"color": "#97c2fc", "id": "Phillyrea angustifolia", "label": "Phillyrea angustifolia", "shape": "dot"}, {"color": "#97c2fc", "id": "Phlomis crinita", "label": "Phlomis crinita", "shape": "dot"}, {"color": "#97c2fc", "id": "Phlomis lychnitis", "label": "Phlomis lychnitis", "shape": "dot"}, {"color": "#97c2fc", "id": "Phlomis purpurea", "label": "Phlomis purpurea", "shape": "dot"}, {"color": "#97c2fc", "id": "Picnomon acarna", "label": "Picnomon acarna", "shape": "dot"}, {"color": "#97c2fc", "id": "Pinus halepensis", "label": "Pinus halepensis", "shape": "dot"}, {"color": "#97c2fc", "id": "Pinus pinaster", "label": "Pinus pinaster", "shape": "dot"}, {"color": "#97c2fc", "id": "Pistacia lentiscus", "label": "Pistacia lentiscus", "shape": "dot"}, {"color": "#97c2fc", "id": "Poa ligulata", "label": "Poa ligulata", "shape": "dot"}, {"color": "#97c2fc", "id": "Prunus prostrata", "label": "Prunus prostrata", "shape": "dot"}, {"color": "#97c2fc", "id": "Ptilostemon hispanicus", "label": "Ptilostemon hispanicus", "shape": "dot"}, {"color": "#97c2fc", "id": "Quercus coccifera", "label": "Quercus coccifera", "shape": "dot"}, {"color": "#97c2fc", "id": "Quercus faginea", "label": "Quercus faginea", "shape": "dot"}, {"color": "#97c2fc", "id": "Quercus rotundifolia", "label": "Quercus rotundifolia", "shape": "dot"}, {"color": "#97c2fc", "id": "Rhamnus myrtifolia", "label": "Rhamnus myrtifolia", "shape": "dot"}, {"color": "#97c2fc", "id": "Rosa canina", "label": "Rosa canina", "shape": "dot"}, {"color": "#97c2fc", "id": "Rosmarinus officinalis", "label": "Rosmarinus officinalis", "shape": "dot"}, {"color": "#97c2fc", "id": "Rubia peregrina", "label": "Rubia peregrina", "shape": "dot"}, {"color": "#97c2fc", "id": "Rubus ulmifolius", "label": "Rubus ulmifolius", "shape": "dot"}, {"color": "#97c2fc", "id": "Sanguisorba minor", "label": "Sanguisorba minor", "shape": "dot"}, {"color": "#97c2fc", "id": "Sanguisorba verrucosa", "label": "Sanguisorba verrucosa", "shape": "dot"}, {"color": "#97c2fc", "id": "Saxifraga globulifera", "label": "Saxifraga globulifera", "shape": "dot"}, {"color": "#97c2fc", "id": "Saxifraga granulata", "label": "Saxifraga granulata", "shape": "dot"}, {"color": "#97c2fc", "id": "Scabiosa turolensis subsp. grosii", "label": "Scabiosa turolensis subsp. grosii", "shape": "dot"}, {"color": "#97c2fc", "id": "Scirpoides holoschoenus", "label": "Scirpoides holoschoenus", "shape": "dot"}, {"color": "#97c2fc", "id": "Sedum dasyphyllum", "label": "Sedum dasyphyllum", "shape": "dot"}, {"color": "#97c2fc", "id": "Silene andryalifolia", "label": "Silene andryalifolia", "shape": "dot"}, {"color": "#97c2fc", "id": "Stachys circinata", "label": "Stachys circinata", "shape": "dot"}, {"color": "#97c2fc", "id": "Teucrium similatum", "label": "Teucrium similatum", "shape": "dot"}, {"color": "#97c2fc", "id": "Thymus mastichina subsp. mastichina", "label": "Thymus mastichina subsp. mastichina", "shape": "dot"}, {"color": "#97c2fc", "id": "Ulex baeticus", "label": "Ulex baeticus", "shape": "dot"}, {"color": "#97c2fc", "id": "Ulex baeticus subsp. baeticus", "label": "Ulex baeticus subsp. baeticus", "shape": "dot"}]);
+                  edges = new vis.DataSet([{"from": "Abies pinsapo", "to": "Abies pinsapo", "width": 16.447368421052634}, {"from": "Anthyllis vulneraria", "to": "Anthyllis vulneraria", "width": 5.131578947368421}, {"from": "Arenaria erinacea", "to": "Arenaria erinacea", "width": 10.0}, {"from": "Asphodelus macrocarpus subsp. rubescens", "to": "Asphodelus macrocarpus subsp. rubescens", "width": 5.7894736842105265}, {"from": "Asplenium ceterach", "to": "Asplenium ceterach", "width": 6.315789473684211}, {"from": "Bellis sylvestris", "to": "Bellis sylvestris", "width": 8.289473684210526}, {"from": "Berberis vulgaris", "to": "Berberis vulgaris", "width": 5.263157894736842}, {"from": "Brachypodium retusum", "to": "Brachypodium retusum", "width": 10.921052631578949}, {"from": "Bupleurum fruticescens subsp. spinosum", "to": "Bupleurum fruticescens subsp. spinosum", "width": 12.894736842105264}, {"from": "Campanula mollis", "to": "Campanula mollis", "width": 5.394736842105264}, {"from": "Carlina corymbosa", "to": "Carlina corymbosa", "width": 9.078947368421053}, {"from": "Cerastium gibraltaricum", "to": "Cerastium gibraltaricum", "width": 16.842105263157894}, {"from": "Chaenorhinum villosum", "to": "Chaenorhinum villosum", "width": 5.131578947368421}, {"from": "Chamaerops humilis", "to": "Chamaerops humilis", "width": 6.842105263157896}, {"from": "Cirsium echinatum", "to": "Cirsium echinatum", "width": 6.842105263157896}, {"from": "Cistus albidus", "to": "Cistus albidus", "width": 16.57894736842105}, {"from": "Cistus ladanifer", "to": "Cistus ladanifer", "width": 6.7105263157894735}, {"from": "Cistus monspeliensis", "to": "Cistus monspeliensis", "width": 6.184210526315789}, {"from": "Cistus salviifolius", "to": "Cistus salviifolius", "width": 7.631578947368421}, {"from": "Crataegus monogyna", "to": "Crataegus monogyna", "width": 13.421052631578947}, {"from": "Dactylis glomerata subsp. hispanica", "to": "Dactylis glomerata subsp. hispanica", "width": 11.578947368421053}, {"from": "Daphne gnidium", "to": "Daphne gnidium", "width": 16.842105263157894}, {"from": "Daphne laureola", "to": "Daphne laureola", "width": 8.81578947368421}, {"from": "Erinacea anthyllis", "to": "Erinacea anthyllis", "width": 8.68421052631579}, {"from": "Erodium cheilanthifolium", "to": "Erodium cheilanthifolium", "width": 9.342105263157894}, {"from": "Erodium cicutarium", "to": "Erodium cicutarium", "width": 5.657894736842105}, {"from": "Festuca scariosa", "to": "Festuca scariosa", "width": 8.026315789473685}, {"from": "Galium baeticum", "to": "Galium baeticum", "width": 5.526315789473684}, {"from": "Geranium purpureum", "to": "Geranium purpureum", "width": 7.5}, {"from": "Hedera helix", "to": "Hedera helix", "width": 7.5}, {"from": "Helianthemum cinereum subsp. rotundifolium", "to": "Helianthemum cinereum subsp. rotundifolium", "width": 5.263157894736842}, {"from": "Helianthemum marifolium", "to": "Helianthemum marifolium", "width": 6.578947368421052}, {"from": "Helichrysum italicum subsp. serotinum", "to": "Helichrysum italicum subsp. serotinum", "width": 5.526315789473684}, {"from": "Helichrysum stoechas", "to": "Helichrysum stoechas", "width": 12.631578947368421}, {"from": "Helleborus foetidus", "to": "Helleborus foetidus", "width": 15.394736842105264}, {"from": "Hormathophylla spinosa", "to": "Hormathophylla spinosa", "width": 9.342105263157894}, {"from": "Juniperus oxycedrus", "to": "Juniperus oxycedrus", "width": 5.394736842105264}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Juniperus oxycedrus subsp. oxycedrus", "width": 13.289473684210526}, {"from": "Juniperus phoenicea subsp. phoenicea", "to": "Juniperus phoenicea subsp. phoenicea", "width": 9.210526315789473}, {"from": "Juniperus sabina", "to": "Juniperus sabina", "width": 7.7631578947368425}, {"from": "Lavandula lanata", "to": "Lavandula lanata", "width": 7.894736842105263}, {"from": "Leontodon longirostris", "to": "Leontodon longirostris", "width": 7.236842105263158}, {"from": "Linaria tristis", "to": "Linaria tristis", "width": 11.710526315789474}, {"from": "Macrochloa tenacissima", "to": "Macrochloa tenacissima", "width": 8.552631578947368}, {"from": "Melica minuta", "to": "Melica minuta", "width": 8.81578947368421}, {"from": "Ononis reuteri", "to": "Ononis reuteri", "width": 7.894736842105263}, {"from": "Orobanche purpurea", "to": "Orobanche purpurea", "width": 5.921052631578947}, {"from": "Phillyrea angustifolia", "to": "Phillyrea angustifolia", "width": 5.263157894736842}, {"from": "Phlomis crinita", "to": "Phlomis crinita", "width": 7.894736842105263}, {"from": "Phlomis lychnitis", "to": "Phlomis lychnitis", "width": 6.578947368421052}, {"from": "Phlomis purpurea", "to": "Phlomis purpurea", "width": 16.710526315789473}, {"from": "Picnomon acarna", "to": "Picnomon acarna", "width": 5.394736842105264}, {"from": "Pinus halepensis", "to": "Pinus halepensis", "width": 6.842105263157896}, {"from": "Pinus pinaster", "to": "Pinus pinaster", "width": 7.7631578947368425}, {"from": "Pistacia lentiscus", "to": "Pistacia lentiscus", "width": 5.131578947368421}, {"from": "Poa ligulata", "to": "Poa ligulata", "width": 7.7631578947368425}, {"from": "Prunus prostrata", "to": "Prunus prostrata", "width": 6.7105263157894735}, {"from": "Ptilostemon hispanicus", "to": "Ptilostemon hispanicus", "width": 6.842105263157896}, {"from": "Quercus coccifera", "to": "Quercus coccifera", "width": 5.131578947368421}, {"from": "Quercus faginea", "to": "Quercus faginea", "width": 9.342105263157894}, {"from": "Quercus rotundifolia", "to": "Quercus rotundifolia", "width": 14.210526315789473}, {"from": "Rhamnus myrtifolia", "to": "Rhamnus myrtifolia", "width": 11.842105263157894}, {"from": "Rosa canina", "to": "Rosa canina", "width": 6.842105263157896}, {"from": "Rosmarinus officinalis", "to": "Rosmarinus officinalis", "width": 7.7631578947368425}, {"from": "Rubia peregrina", "to": "Rubia peregrina", "width": 13.289473684210526}, {"from": "Rubus ulmifolius", "to": "Rubus ulmifolius", "width": 5.7894736842105265}, {"from": "Sanguisorba minor", "to": "Sanguisorba minor", "width": 8.68421052631579}, {"from": "Sanguisorba verrucosa", "to": "Sanguisorba verrucosa", "width": 7.5}, {"from": "Saxifraga globulifera", "to": "Saxifraga globulifera", "width": 6.315789473684211}, {"from": "Saxifraga granulata", "to": "Saxifraga granulata", "width": 5.131578947368421}, {"from": "Scabiosa turolensis subsp. grosii", "to": "Scabiosa turolensis subsp. grosii", "width": 9.342105263157894}, {"from": "Scirpoides holoschoenus", "to": "Scirpoides holoschoenus", "width": 7.5}, {"from": "Sedum dasyphyllum", "to": "Sedum dasyphyllum", "width": 6.315789473684211}, {"from": "Silene andryalifolia", "to": "Silene andryalifolia", "width": 8.157894736842106}, {"from": "Stachys circinata", "to": "Stachys circinata", "width": 5.394736842105264}, {"from": "Teucrium similatum", "to": "Teucrium similatum", "width": 9.473684210526317}, {"from": "Thymus mastichina subsp. mastichina", "to": "Thymus mastichina subsp. mastichina", "width": 13.026315789473683}, {"from": "Ulex baeticus", "to": "Ulex baeticus", "width": 5.921052631578947}, {"from": "Ulex baeticus subsp. baeticus", "to": "Ulex baeticus subsp. baeticus", "width": 22.36842105263158}, {"from": "Abies pinsapo", "to": "Crataegus monogyna", "width": 5.131578947368421}, {"from": "Abies pinsapo", "to": "Daphne gnidium", "width": 5.263157894736842}, {"from": "Daphne laureola", "to": "Abies pinsapo", "width": 5.526315789473684}, {"from": "Helleborus foetidus", "to": "Abies pinsapo", "width": 7.631578947368421}, {"from": "Abies pinsapo", "to": "Juniperus phoenicea subsp. phoenicea", "width": 5.526315789473684}, {"from": "Quercus rotundifolia", "to": "Abies pinsapo", "width": 5.7894736842105265}, {"from": "Ulex baeticus subsp. baeticus", "to": "Abies pinsapo", "width": 6.184210526315789}, {"from": "Arenaria erinacea", "to": "Bupleurum fruticescens subsp. spinosum", "width": 5.131578947368421}, {"from": "Brachypodium retusum", "to": "Cistus albidus", "width": 6.184210526315789}, {"from": "Brachypodium retusum", "to": "Daphne gnidium", "width": 6.447368421052632}, {"from": "Phlomis purpurea", "to": "Brachypodium retusum", "width": 8.289473684210526}, {"from": "Ulex baeticus subsp. baeticus", "to": "Brachypodium retusum", "width": 6.7105263157894735}, {"from": "Bupleurum fruticescens subsp. spinosum", "to": "Cerastium gibraltaricum", "width": 6.052631578947368}, {"from": "Erinacea anthyllis", "to": "Bupleurum fruticescens subsp. spinosum", "width": 6.578947368421052}, {"from": "Festuca scariosa", "to": "Bupleurum fruticescens subsp. spinosum", "width": 5.0}, {"from": "Helleborus foetidus", "to": "Bupleurum fruticescens subsp. spinosum", "width": 6.447368421052632}, {"from": "Helleborus foetidus", "to": "Cerastium gibraltaricum", "width": 6.052631578947368}, {"from": "Chamaerops humilis", "to": "Phlomis purpurea", "width": 5.657894736842105}, {"from": "Cistus albidus", "to": "Dactylis glomerata subsp. hispanica", "width": 5.7894736842105265}, {"from": "Cistus albidus", "to": "Daphne gnidium", "width": 10.526315789473683}, {"from": "Helichrysum stoechas", "to": "Cistus albidus", "width": 6.578947368421052}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Cistus albidus", "width": 8.157894736842106}, {"from": "Cistus albidus", "to": "Lavandula lanata", "width": 5.131578947368421}, {"from": "Macrochloa tenacissima", "to": "Cistus albidus", "width": 5.263157894736842}, {"from": "Phlomis purpurea", "to": "Cistus albidus", "width": 10.394736842105264}, {"from": "Cistus albidus", "to": "Pinus halepensis", "width": 5.263157894736842}, {"from": "Quercus rotundifolia", "to": "Cistus albidus", "width": 5.921052631578947}, {"from": "Cistus albidus", "to": "Rosmarinus officinalis", "width": 6.842105263157896}, {"from": "Thymus mastichina subsp. mastichina", "to": "Cistus albidus", "width": 6.7105263157894735}, {"from": "Ulex baeticus subsp. baeticus", "to": "Cistus albidus", "width": 10.394736842105264}, {"from": "Phlomis purpurea", "to": "Cistus monspeliensis", "width": 5.657894736842105}, {"from": "Daphne laureola", "to": "Crataegus monogyna", "width": 5.7894736842105265}, {"from": "Helleborus foetidus", "to": "Crataegus monogyna", "width": 6.447368421052632}, {"from": "Crataegus monogyna", "to": "Quercus faginea", "width": 5.526315789473684}, {"from": "Rubia peregrina", "to": "Crataegus monogyna", "width": 5.263157894736842}, {"from": "Daphne gnidium", "to": "Dactylis glomerata subsp. hispanica", "width": 5.131578947368421}, {"from": "Phlomis purpurea", "to": "Dactylis glomerata subsp. hispanica", "width": 6.315789473684211}, {"from": "Ulex baeticus subsp. baeticus", "to": "Dactylis glomerata subsp. hispanica", "width": 6.973684210526315}, {"from": "Helichrysum stoechas", "to": "Daphne gnidium", "width": 5.394736842105264}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Daphne gnidium", "width": 6.052631578947368}, {"from": "Phlomis purpurea", "to": "Daphne gnidium", "width": 9.868421052631579}, {"from": "Quercus rotundifolia", "to": "Daphne gnidium", "width": 6.315789473684211}, {"from": "Daphne gnidium", "to": "Rosmarinus officinalis", "width": 5.263157894736842}, {"from": "Rubia peregrina", "to": "Daphne gnidium", "width": 6.315789473684211}, {"from": "Thymus mastichina subsp. mastichina", "to": "Daphne gnidium", "width": 5.394736842105264}, {"from": "Ulex baeticus subsp. baeticus", "to": "Daphne gnidium", "width": 9.605263157894736}, {"from": "Helleborus foetidus", "to": "Daphne laureola", "width": 7.7631578947368425}, {"from": "Daphne laureola", "to": "Quercus faginea", "width": 5.0}, {"from": "Hormathophylla spinosa", "to": "Erodium cheilanthifolium", "width": 5.657894736842105}, {"from": "Helichrysum stoechas", "to": "Thymus mastichina subsp. mastichina", "width": 5.526315789473684}, {"from": "Helichrysum stoechas", "to": "Ulex baeticus subsp. baeticus", "width": 8.81578947368421}, {"from": "Helleborus foetidus", "to": "Hormathophylla spinosa", "width": 6.052631578947368}, {"from": "Helleborus foetidus", "to": "Juniperus sabina", "width": 6.973684210526315}, {"from": "Helleborus foetidus", "to": "Ononis reuteri", "width": 5.7894736842105265}, {"from": "Helleborus foetidus", "to": "Prunus prostrata", "width": 5.263157894736842}, {"from": "Helleborus foetidus", "to": "Quercus faginea", "width": 5.394736842105264}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Phlomis purpurea", "width": 7.105263157894736}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Quercus rotundifolia", "width": 5.0}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Thymus mastichina subsp. mastichina", "width": 5.526315789473684}, {"from": "Juniperus oxycedrus subsp. oxycedrus", "to": "Ulex baeticus subsp. baeticus", "width": 10.263157894736842}, {"from": "Ulex baeticus subsp. baeticus", "to": "Lavandula lanata", "width": 6.052631578947368}, {"from": "Macrochloa tenacissima", "to": "Phlomis purpurea", "width": 5.526315789473684}, {"from": "Ulex baeticus subsp. baeticus", "to": "Macrochloa tenacissima", "width": 6.184210526315789}, {"from": "Ulex baeticus subsp. baeticus", "to": "Phlomis lychnitis", "width": 5.0}, {"from": "Phlomis purpurea", "to": "Pinus halepensis", "width": 5.131578947368421}, {"from": "Quercus rotundifolia", "to": "Phlomis purpurea", "width": 6.315789473684211}, {"from": "Phlomis purpurea", "to": "Rosmarinus officinalis", "width": 5.7894736842105265}, {"from": "Phlomis purpurea", "to": "Rubia peregrina", "width": 5.526315789473684}, {"from": "Phlomis purpurea", "to": "Thymus mastichina subsp. mastichina", "width": 6.447368421052632}, {"from": "Ulex baeticus subsp. baeticus", "to": "Phlomis purpurea", "width": 10.657894736842104}, {"from": "Pinus halepensis", "to": "Rosmarinus officinalis", "width": 5.394736842105264}, {"from": "Ptilostemon hispanicus", "to": "Ulex baeticus subsp. baeticus", "width": 5.526315789473684}, {"from": "Quercus rotundifolia", "to": "Thymus mastichina subsp. mastichina", "width": 6.052631578947368}, {"from": "Quercus rotundifolia", "to": "Ulex baeticus subsp. baeticus", "width": 7.631578947368421}, {"from": "Ulex baeticus subsp. baeticus", "to": "Rosmarinus officinalis", "width": 5.526315789473684}, {"from": "Ulex baeticus subsp. baeticus", "to": "Rubia peregrina", "width": 5.263157894736842}, {"from": "Ulex baeticus subsp. baeticus", "to": "Teucrium similatum", "width": 5.263157894736842}, {"from": "Ulex baeticus subsp. baeticus", "to": "Thymus mastichina subsp. mastichina", "width": 9.473684210526317}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "repulsion": {
+            "centralGravity": 0.2,
+            "damping": 0.09,
+            "nodeDistance": 100,
+            "springConstant": 0.05,
+            "springLength": 600
+        },
+        "solver": "repulsion",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
